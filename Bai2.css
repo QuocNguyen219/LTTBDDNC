@@ -1,0 +1,43 @@
+.flex-header {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: blueviolet;
+    margin-top: 20px;
+    font-weight: bold;
+   
+}
+
+.flex-header>div {
+    line-height: 75px;
+    font-size: 50px;
+    color: white;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: white ;
+    border: 1px solid black;
+}
+
+.flex-container>div {
+    background-color: cyan;
+    margin: 10px;
+    text-align: center;
+    font-size: 30px;
+   padding: 5px;
+}
+.flex-container>div>div {
+ 
+ 
+    text-align: left;
+   
+    font-size: 30px;
+    font-weight: bold;
+}
+.flex-container>div>p {
+   
+    text-align: left;
+    font-size: 20px;
+}
