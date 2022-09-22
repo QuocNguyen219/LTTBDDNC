@@ -1,8 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet,Image, Text, View } from 'react-native';
-import { back } from 'react-native/Libraries/Animated/Easing';
+import { StyleSheet,Image, Text, View, TextInput } from 'react-native';
 
+import { useState } from "react";
 export default function App() {
+  const [soLuong, setSoLuong] = useState("1 ");
+  const [tamTinh, setTamTinh] = useState("141.800 đ");
+  const [thanhTien, setThanhTien] = useState("141.800 đ");
+  function soLuongTang() {
+    setSoLuong(Number.parseInt(soLuong)+1+"")
+    setTamTinh(((Number.parseInt(soLuong)+1)*141.800).toFixed(3)+" đ")
+    setThanhTien(((Number.parseInt(soLuong)+1)*141.800).toFixed(3)+" đ")
+  }
+  function soLuongGiam() {
+    if(soLuong!=0){
+    setSoLuong(Number.parseInt(soLuong)-1+"")
+    setTamTinh(((Number.parseInt(soLuong)-1)*141.800).toFixed(3)+" đ")
+    setThanhTien(((Number.parseInt(soLuong)-1)*141.800).toFixed(3)+" đ")
+    }else{
+      setTamTinh(0+".000 đ")
+      setThanhTien(0+".000 đ")
+    }
+    
+  }
   return (
     <View style={styles.container}>
       <View style={styles.above}>
@@ -14,9 +33,9 @@ export default function App() {
             <Text style={styles.giaChinhThuc}>141.800 đ</Text>
             <Text style={styles.giaGachNgang}>141.800 đ</Text>
             <View style={styles.above_text}>
-              <Text style={styles.congTru}>-</Text>
-              <Text style={styles.soLuongMua}>1</Text>
-              <Text style={styles.congTru}>+</Text>
+              <Text style={styles.congTru} onPress={soLuongGiam}>-</Text>
+              <TextInput style={styles.soLuongMua} editable={false} value={soLuong} ></TextInput>
+              <Text style={styles.congTru} onPress={soLuongTang}>+</Text>
             <Text style={styles.muaSau}>Mua sau</Text>
             </View>
            
@@ -46,13 +65,13 @@ export default function App() {
 
       <View style={styles.centerTamTinh}>
         <Text style={styles.tamTinh}>Tạm tính</Text>
-        <Text style={styles.giaTamTinh}>141.800 đ</Text>
+        <TextInput editable={false} style={styles.giaTamTinh} value={tamTinh}></TextInput>
       </View>
       <View style={styles.backGroundCenter2}></View>
 
       <View style={styles.centerThanhTien}>
         <Text style={styles.thanhTien}>Thành tiền</Text>
-        <Text style={styles.giaThanhTien}>141.800 đ</Text>
+        <TextInput editable={false} style={styles.giaThanhTien} value={thanhTien}></TextInput>
       </View>
       <View style={styles.below}>
         <Text style={styles.datHang}>TIẾN HÀNH ĐẶT HÀNG</Text>
@@ -134,6 +153,7 @@ const styles = StyleSheet.create({
     fontSize:20,
     marginLeft:10,
     marginRight:10,
+    color: 'black'
 
   },
   textgiamGia:{
@@ -245,7 +265,8 @@ const styles = StyleSheet.create({
   giaThanhTien:{
     fontWeight:'bold',
     fontSize:20,
-    color: 'red'
+    color: 'red',
+    
 
   },
   below:{
