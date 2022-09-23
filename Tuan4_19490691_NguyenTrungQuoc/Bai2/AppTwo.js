@@ -1,16 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,Image, Text, View } from 'react-native';
-import { Rating } from 'react-native-ratings';
-import App from './App';
 
-function DetailsScreen({ navigation }) {
+function AppTwo( ) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-      <Button
-        title="Go to Details... again"
-        onPress={() => navigation.push('Home')}
-      />
+    <View style={styles.container}>
+      <View style={styles.above}>
+        <Image
+          style={styles.imageDT}
+          source={require("./image/vsmart_live_xanh.png")}
+        ></Image>
+        <Text style={styles.tenDT}>Điện Thoại Vsmart Joy 3 {"\n"} Hàng chính hãng</Text>
+      </View>
+      <View style={styles.below}>
+        <Text style={styles.chonMau}>Chọn một màu bên dưới:</Text>
+        <View style={styles.mauSac}>
+          <Text style={[styles.bac,styles.hinhVuong]}></Text>
+          <Text style={[styles.do,styles.hinhVuong]}></Text>
+          <Text style={[styles.den,styles.hinhVuong]}></Text>
+          <Text style={[styles.xanh,styles.hinhVuong]}></Text>
+        </View>
+        <View style={styles.below_Xong}>
+         <Text style={styles.xong}>XONG</Text>
+        </View>
+      </View>
+      
     </View>
   );
 }
@@ -18,100 +31,64 @@ function DetailsScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  
+    backgroundColor: '#FFFFFF'
   },
   above:{
-    flex:0.7,
-    justifyContent:'center',
-    alignItems:'center',
-    marginTop:20
-  },
-  imageDT:{
-    flex: 1,
-    resizeMode: 'contain' 
-  },
-  center:{
-    flex:0.35,
-    marginLeft:25
-  },
-  center_danhGia:{
-    flex:1,
-    flexDirection:'row',
-    alignItems:'center'
-  },
-  center_danhGia_danhGia:{
-    marginLeft:20
-  },
-  center_gia:{
-    flex:1,
+    flex:0.25,
     flexDirection:'row',
     
   },
-  giaChinh:{
-    fontWeight:'bold',
-    fontSize:25,
+  imageDT: {
+    flex:1,
+    height:140,
+    resizeMode: "contain",
   },
-  giaPhu:{
+  tenDT:{
+    flex:1,
     paddingTop:10,
-    marginLeft:30,
-    color:'gray',
-    fontWeight:'bold',
-    textDecorationLine:'line-through'
-  },
-  center_hoanTien:{
-    flex:1,
-    flexDirection:'row',
-  },
-  hoanTien:{
-    color:'red',
-    fontWeight:'bold'
-  },
-  chamHoi:{
-    borderWidth:1,
-    marginLeft:20,
     
-    paddingLeft:6,
-    width: 20,
-    height: 20,
-    borderRadius: 60 / 2,
-
-   },
-  center2:{
-    flex:0.1,
-    flexDirection:'row',
-    marginLeft: 25,
-    marginBottom:25,
-    marginRight:25,
-    borderWidth:1,
-    borderRadius:30,
-    justifyContent:'flex-end',
-    alignItems:'center',
-  
-  },
-  chonMau:{
-   
-    fontSize:15
-  },
-  muiTen:{
-    fontSize:25,
-    marginLeft:90,
-    marginRight:10
   },
   below:{
+    flex:0.75,
+    backgroundColor:'#C4C4C4',
+    padding:10
+  },
+  chonMau:{
+    fontSize:18
+  }, 
+  mauSac:{
+    flex:1,
+    alignItems:'center'
+  },
+  hinhVuong:{
+    width: 85,
+    height: 80,
+    marginTop: 10,
+  },
+  bac:{
+    backgroundColor:'#C5F1FB'
+  },
+  do:{
+    backgroundColor:'#F30D0D'
+  },
+  den:{
+    backgroundColor:'#000000'
+  },
+  xanh:{
+    backgroundColor:'#234896'
+  },
+  below_Xong:{
     flex:0.1,
-    backgroundColor:'#EE0A0A',
-    margin:25,
-    borderWidth:1,
-    borderRadius:20,
     justifyContent:'center',
     alignItems:'center',
+    backgroundColor:'#1952E294',
+    borderWidth:1,
+    borderRadius:10,
     borderColor:'#CA1536'
   },
-  chonMua:{
-    color:'white',
-    fontWeight:'bold',
-    fontSize:20
+  xong:{
+    color:'#F9F2F2'
   }
 });
 
-export default DetailsScreen;
+module.exports = AppTwo;
