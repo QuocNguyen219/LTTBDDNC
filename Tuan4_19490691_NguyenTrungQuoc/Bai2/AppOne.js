@@ -1,14 +1,16 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet,TouchableOpacity, Image, Text, View } from "react-native";
+import { StyleSheet, TouchableOpacity, Image, Text, View } from "react-native";
 import { Rating } from "react-native-ratings";
-
-function AppOne({ navigation }) {
+import { useRoute } from "@react-navigation/native";
+export default function AppOne({ navigation }) {
+  const route = useRoute();
+  const { colorSelected } = route.params ? route.params: require("./image/vs_blue.png");
   return (
     <View style={styles.container}>
       <View style={styles.above}>
         <Image
           style={styles.imageDT}
-          source={require("./image/vsmart_live_xanh.png")}
+          source={colorSelected ? colorSelected :require("./image/vs_blue.png")}
         ></Image>
       </View>
 
@@ -137,5 +139,3 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 });
-
-module.exports = AppOne;
