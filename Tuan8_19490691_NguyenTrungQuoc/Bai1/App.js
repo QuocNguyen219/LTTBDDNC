@@ -6,30 +6,19 @@ import icon from "./assets/cat.png";
 
 export default function FollowMouse() {
   const [location, setLocation] = useState({
-    x: null,
-    y: null,
     marginLeft: new Animated.Value(10),
     marginTop: new Animated.Value(10),
   });
-
   function onPress(evt) {
-    console.log("====================================");
     var x = evt.nativeEvent.locationX;
-    console.log("====================================");
-    console.log(x);
-    console.log("====================================");
     var y = evt.nativeEvent.locationY;
-    console.log("====================================");
     setLocation({
-      x: x,
-      y: y,
       marginLeft: x - 30,
       marginTop: y - 40,
     });
   }
   function onMove(evt) {
     var x = evt.nativeEvent.locationX;
-
     var y = evt.nativeEvent.locationY;
     setLocation({ marginLeft: x - 30, marginTop: y - 40 });
   }
